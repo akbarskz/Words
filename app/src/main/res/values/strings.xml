@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Words</string>
+    <string name="theme1">Весна</string>
+    <string name="theme2">День рождения</string>
+    <string name="theme3">Музыкальные инструменты</string>
+    <string name="word1_1_en">Birds</string>
+    <string name="word1_1_ru">Птицы</string>
+    <string name="word1_2_en">Flowers</string>
+    <string name="word1_2_ru">Цветы</string>
+    <string name="word1_3_en">Spring</string>
+    <string name="word1_3_ru">Весна</string>
+    <string name="word1_4_en">Bees</string>
+    <string name="word1_4_ru">Пчелы</string>
+    <string name="word1_5_en">Leavs</string>
+    <string name="word1_5_ru">Листья</string>
+    <string name="word1_6_en">Trees</string>
+    <string name="word1_6_ru">Деревья</string>
+    <string name="word2_1_en">Birthday</string>
+    <string name="word2_1_ru">День рождения</string>
+    <string name="word2_2_en">Cake</string>
+    <string name="word2_2_ru">Торт</string>
+    <string name="word2_3_en">Baloon</string>
+    <string name="word2_3_ru">Шарик</string>
+    <string name="word2_4_en">Present</string>
+    <string name="word2_4_ru">Подарок</string>
+    <string name="word2_5_en">Guest</string>
+    <string name="word2_5_ru">Гость</string>
+    <string name="word2_6_en">Candle</string>
+    <string name="word2_6_ru">Свечка</string>
+    <string name="word3_1_en">Trumpet</string>
+    <string name="word3_1_ru">Труба</string>
+    <string name="word3_2_en">Guitar</string>
+    <string name="word3_2_ru">Гитара</string>
+    <string name="word3_3_en">Drum</string>
+    <string name="word3_3_ru">Барабан</string>
+    <string name="word3_4_en">Piano</string>
+    <string name="word3_4_ru">Пианино</string>
+    <string name="word3_5_en">Recorder</string>
+    <string name="word3_5_ru">Дудочка</string>
+
+</resources>

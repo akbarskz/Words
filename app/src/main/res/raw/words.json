@@ -1,0 +1,85 @@
+﻿[
+  {
+    "theme": "Весна",
+    "words": [
+      {
+        "word_en": "Birds",
+        "word_ru": "Птицы"
+      },
+      {
+        "word_en": "Flowers",
+        "word_ru": "Цветы"
+      },
+      {
+        "word_en": "Spring",
+        "word_ru": "Весна"
+      },
+      {
+        "word_en": "Bees",
+        "word_ru": "Пчелы"
+      },
+      {
+        "word_en": "Leavs",
+        "word_ru": "Листья"
+      },
+      {
+        "word_en": "Trees",
+        "word_ru": "Деревья"
+      }
+    ]
+  },
+  {
+    "theme": "День рождения",
+    "words": [
+      {
+        "word_en": "Birthday",
+        "word_ru": "День рождения"
+      },
+      {
+        "word_en": "Cake",
+        "word_ru": "Торт"
+      },
+      {
+        "word_en": "Baloon",
+        "word_ru": "Шарик"
+      },
+      {
+        "word_en": "Present",
+        "word_ru": "Подарок"
+      },
+      {
+        "word_en": "Guest",
+        "word_ru": "Гость"
+      },
+      {
+        "word_en": "Candle",
+        "word_ru": "Свечка"
+      }
+    ]
+  },
+  {
+    "theme": "Музыкальные инструменты",
+    "words": [
+      {
+        "word_en": "Trumpet",
+        "word_ru": "Труба"
+      },
+      {
+        "word_en": "Guitar",
+        "word_ru": "Гитара"
+      },
+      {
+        "word_en": "Drum",
+        "word_ru": "Барабан"
+      },
+      {
+        "word_en": "Piano",
+        "word_ru": "Пианино"
+      },
+      {
+        "word_en": "Recorder",
+        "word_ru": "Дудочка"
+      }
+    ]
+  }
+]
