@@ -3,28 +3,34 @@
     "theme": "Весна",
     "words": [
       {
-        "word_en": "Birds",
-        "word_ru": "Птицы"
+        "word_en": "Bird",
+        "word_ru": "Птица",
+        "sound": "bird.mp3"
       },
       {
-        "word_en": "Flowers",
-        "word_ru": "Цветы"
+        "word_en": "Flower",
+        "word_ru": "Цветок",
+        "sound": "flower.mp3"
       },
       {
         "word_en": "Spring",
-        "word_ru": "Весна"
+        "word_ru": "Весна",
+        "sound": "spring.mp3"
       },
       {
-        "word_en": "Bees",
-        "word_ru": "Пчелы"
+        "word_en": "Bee",
+        "word_ru": "Пчела",
+        "sound": "bee.mp3"
       },
       {
-        "word_en": "Leavs",
-        "word_ru": "Листья"
+        "word_en": "Leaf",
+        "word_ru": "Лист",
+        "sound": "leaf.mp3"
       },
       {
-        "word_en": "Trees",
-        "word_ru": "Деревья"
+        "word_en": "Tree",
+        "word_ru": "Дерево",
+        "sound": "tree.mp3"
       }
     ]
   },
@@ -33,27 +39,33 @@
     "words": [
       {
         "word_en": "Birthday",
-        "word_ru": "День рождения"
+        "word_ru": "День рождения",
+        "sound": "birthday.mp3"
       },
       {
         "word_en": "Cake",
-        "word_ru": "Торт"
+        "word_ru": "Торт",
+        "sound": "cake.mp3"
       },
       {
-        "word_en": "Baloon",
-        "word_ru": "Шарик"
+        "word_en": "Balloon",
+        "word_ru": "Шарик",
+        "sound": "balloon.mp3"
       },
       {
         "word_en": "Present",
-        "word_ru": "Подарок"
+        "word_ru": "Подарок",
+        "sound": "present.mp3"
       },
       {
         "word_en": "Guest",
-        "word_ru": "Гость"
+        "word_ru": "Гость",
+        "sound": "guest.mp3"
       },
       {
         "word_en": "Candle",
-        "word_ru": "Свечка"
+        "word_ru": "Свечка",
+        "sound": "candle.mp3"
       }
     ]
   },
@@ -62,23 +74,28 @@
     "words": [
       {
         "word_en": "Trumpet",
-        "word_ru": "Труба"
+        "word_ru": "Труба",
+        "sound": "trumpet.mp3"
       },
       {
         "word_en": "Guitar",
-        "word_ru": "Гитара"
+        "word_ru": "Гитара",
+        "sound": "guitar.mp3"
       },
       {
         "word_en": "Drum",
-        "word_ru": "Барабан"
+        "word_ru": "Барабан",
+        "sound": "drum.mp3"
       },
       {
         "word_en": "Piano",
-        "word_ru": "Пианино"
+        "word_ru": "Пианино",
+        "sound": "piano.mp3"
       },
       {
         "word_en": "Recorder",
-        "word_ru": "Дудочка"
+        "word_ru": "Флейта",
+        "sound": "recorder.mp3"
       }
     ]
   }

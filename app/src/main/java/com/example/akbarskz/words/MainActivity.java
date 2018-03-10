@@ -1,6 +1,9 @@
 package com.example.akbarskz.words;
 
 import android.content.ClipData;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,11 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout targetLayout, sourceLayout;
     private Button check;
-    private TextView tvTheme,tvTranslation;
+    private TextView tvTheme, tvTranslation;
+    private ImageView play;
+
+    private MediaPlayer mPlayer;
 
     private Map<Integer, TextView> targets;
 
     private Map<Character, ArrayList<Integer>> mCharacters;
+
+    private Word currentWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         targetLayout = (LinearLayout) findViewById(R.id.target);
         sourceLayout = (LinearLayout) findViewById(R.id.source);
         check = (Button) findViewById(R.id.check);
+        play = (ImageView) findViewById(R.id.play);
         tvTheme = (TextView) findViewById(R.id.theme);
         tvTranslation = (TextView) findViewById(R.id.translation);
 
@@ -82,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sayCurrentWord();
+            }
+        });
+
         mCharacters = new TreeMap<Character, ArrayList<Integer>>();
 
         String jsonString = getWordsJsonFromResources();
@@ -93,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Получение json из ресурсов
+     *
      * @return Текст json
      */
     private String getWordsJsonFromResources() {
@@ -144,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Разбиваем слово на символы и заполняем mCharacters
         for (int i = 0; i < word.getWordEn().length(); i++) {
-            Character character = word.getWordEn().charAt(i);
+            Character character = Character.toLowerCase(word.getWordEn().charAt(i));
             if (!mCharacters.containsKey(character)) {
                 mCharacters.put(character, new ArrayList<Integer>());
             }
@@ -192,6 +210,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Обновяем видимость кнопки проверки слова
         updateCheckButtonVisibility();
+
+        currentWord = word;
+
+        // Произносим слово
+        sayCurrentWord();
     }
 
     /**
@@ -472,5 +495,66 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return success;
+    }
+
+    /**
+     * Воспроизведение текущего слова
+     */
+    private void sayCurrentWord() {
+        try {
+            // Если воспроизведение не завершено, то звук не проигрывается
+            if (mPlayer == null){
+                mPlayer = new MediaPlayer();
+                Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName()
+                        + "/raw/" + removeExtension(currentWord.getSound()));
+                mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mPlayer.setDataSource(getApplicationContext(), soundUri);
+                mPlayer.prepare();
+                mPlayer.start();
+                mPlayer.setOnCompletionListener(onCompletionListener);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Обработчик завершения воспроизведения
+     */
+    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            // Освобождаем ресурсы
+            mPlayer.release();
+            mPlayer = null;
+        }
+    };
+
+    /**
+     * Удаление расширения файла
+     * @param fileName Имя файла
+     * @return Имя файла без расширения
+     */
+    public static String removeExtension(String fileName) {
+
+        String separator = System.getProperty("file.separator");
+        String filename;
+
+        // Remove the path upto the filename.
+        int lastSeparatorIndex = fileName.lastIndexOf(separator);
+        if (lastSeparatorIndex == -1) {
+            filename = fileName;
+        } else {
+            filename = fileName.substring(lastSeparatorIndex + 1);
+        }
+
+        // Remove the extension.
+        int extensionIndex = filename.lastIndexOf(".");
+        if (extensionIndex == -1)
+            return filename;
+
+        return filename.substring(0, extensionIndex);
     }
 }

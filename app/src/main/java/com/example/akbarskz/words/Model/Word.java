@@ -11,6 +11,9 @@ public class Word {
     @SerializedName("word_ru")
     @Expose
     private String wordRu;
+    @SerializedName("sound")
+    @Expose
+    private String sound;
 
     public String getWordEn() {
         return wordEn;
@@ -28,4 +31,11 @@ public class Word {
         this.wordRu = wordRu;
     }
 
+    public String getSound() {
+        return sound;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
+    }
 }

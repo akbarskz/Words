@@ -93,6 +93,17 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_play_circle_outline_24dp"
+        app:layout_constraintStart_toEndOf="@+id/translation"
+        app:layout_constraintTop_toTopOf="@+id/translation"
+        app:layout_constraintBottom_toBottomOf="@+id/translation"/>
+
+
     <LinearLayout
         android:id="@+id/source"
         android:layout_width="wrap_content"
