@@ -37,5 +37,6 @@
     <string name="word3_4_ru">Пианино</string>
     <string name="word3_5_en">Recorder</string>
     <string name="word3_5_ru">Дудочка</string>
+    <string name="title_activity_theme">ThemeActivity</string>
 
 </resources>

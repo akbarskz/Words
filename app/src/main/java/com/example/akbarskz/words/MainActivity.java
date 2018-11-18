@@ -31,6 +31,7 @@ import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -103,7 +104,14 @@ public class MainActivity extends AppCompatActivity {
 
         String jsonString = getWordsJsonFromResources();
 
-        themes = new Gson().fromJson(jsonString, Theme[].class);
+        Theme[] allThemes = new Gson().fromJson(jsonString, Theme[].class);
+        List<Theme> activeThemes = new ArrayList<Theme>();
+        for (Theme theme : allThemes) {
+            if (theme.getIsActive()) {
+                activeThemes.add(theme);
+            }
+        }
+        themes = activeThemes.toArray(new Theme[0]);
 
         initRandomWord();
     }

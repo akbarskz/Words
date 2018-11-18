@@ -1,6 +1,7 @@
 ﻿[
   {
     "theme": "Весна",
+    "is_active": false,
     "words": [
       {
         "word_en": "Bird",
@@ -36,6 +37,7 @@
   },
   {
     "theme": "День рождения",
+    "is_active": false,
     "words": [
       {
         "word_en": "Birthday",
@@ -71,6 +73,7 @@
   },
   {
     "theme": "Музыкальные инструменты",
+    "is_active": false,
     "words": [
       {
         "word_en": "Trumpet",
@@ -96,6 +99,460 @@
         "word_en": "Recorder",
         "word_ru": "Флейта",
         "sound": "recorder.mp3"
+      }
+    ]
+  },
+  {
+    "theme": "Lesson 3",
+    "is_active": true,
+    "words": [
+      {
+        "word_en": "Taxi",
+        "word_ru": "Такси",
+        "sound": "taxi.mp3"
+      },
+      {
+        "word_en": "Lorry",
+        "word_ru": "Грузовик",
+        "sound": "lorry.mp3"
+      },
+      {
+        "word_en": "Bike",
+        "word_ru": "Велосипед",
+        "sound": "bike.mp3"
+      },
+      {
+        "word_en": "Umbrella",
+        "word_ru": "Зонтик",
+        "sound": "umbrella.mp3"
+      },
+      {
+        "word_en": "Grandfather",
+        "word_ru": "Дедушка",
+        "sound": "grandfather.mp3"
+      },
+      {
+        "word_en": "Ship",
+        "word_ru": "Корабль",
+        "sound": "ship.mp3"
+      },
+      {
+        "word_en": "Plane",
+        "word_ru": "Самолет",
+        "sound": "plane.mp3"
+      },
+      {
+        "word_en": "Bus",
+        "word_ru": "автобус",
+        "sound": "bus.mp3"
+      },
+      {
+        "word_en": "Tin",
+        "word_ru": "Консервная банка",
+        "sound": "tin.mp3"
+      },
+      {
+        "word_en": "Bin",
+        "word_ru": "Мусорное ведро",
+        "sound": "bin.mp3"
+      },
+      {
+        "word_en": "Pin",
+        "word_ru": "Булавка",
+        "sound": "pin.mp3"
+      },
+      {
+        "word_en": "Fig",
+        "word_ru": "Инжир",
+        "sound": "fig.mp3"
+      },
+      {
+        "word_en": "Hello",
+        "word_ru": "Здравствуйте",
+        "sound": "hello.mp3"
+      },
+      {
+        "word_en": "Hi",
+        "word_ru": "Привет",
+        "sound": "hi.mp3"
+      },
+      {
+        "word_en": "Good bye",
+        "word_ru": "До свидания",
+        "sound": "good_bye.mp3"
+      },
+      {
+        "word_en": "Bye",
+        "word_ru": "Пока",
+        "sound": "bye.mp3"
+      },
+      {
+        "word_en": "Good morning",
+        "word_ru": "Доброе утро",
+        "sound": "good_morning.mp3"
+      },
+      {
+        "word_en": "Good afternoon",
+        "word_ru": "Добрый день",
+        "sound": "good_afternoon.mp3"
+      },
+      {
+        "word_en": "How are you?",
+        "word_ru": "Как дела?",
+        "sound": "how_are_you.mp3"
+      }
+    ]
+  },
+  {
+    "theme": "Lesson 2",
+    "is_active": true,
+    "words": [
+      {
+        "word_en": "Shop",
+        "word_ru": "Магазин",
+        "sound": "shop.mp3"
+      },
+      {
+        "word_en": "Kitten",
+        "word_ru": "Котенок",
+        "sound": "kitten.mp3"
+      },
+      {
+        "word_en": "Book",
+        "word_ru": "книга",
+        "sound": "book.mp3"
+      },
+      {
+        "word_en": "Father",
+        "word_ru": "Папа",
+        "sound": "father.mp3"
+      },
+      {
+        "word_en": "Mother",
+        "word_ru": "Мама",
+        "sound": "mother.mp3"
+      },
+      {
+        "word_en": "bag",
+        "word_ru": "Сумка",
+        "sound": "bag.mp3"
+      },
+      {
+        "word_en": "Pencil",
+        "word_ru": "Карандаш",
+        "sound": "pencil.mp3"
+      },
+      {
+        "word_en": "Rabbit",
+        "word_ru": "Кролик",
+        "sound": "rabbit.mp3"
+      },
+      {
+        "word_en": "Box",
+        "word_ru": "Коробка",
+        "sound": "box.mp3"
+      },
+      {
+        "word_en": "School",
+        "word_ru": "Школа",
+        "sound": "school.mp3"
+      },
+      {
+        "word_en": "Crayon",
+        "word_ru": "Цветной карандаш",
+        "sound": "crayon.mp3"
+      },
+      {
+        "word_en": "Blackboard",
+        "word_ru": "Доска",
+        "sound": "blackboard.mp3"
+      },
+      {
+        "word_en": "Ruler",
+        "word_ru": "Линейка",
+        "sound": "ruler.mp3"
+      },
+      {
+        "word_en": "Rubber",
+        "word_ru": "Ластик",
+        "sound": "rubber.mp3"
+      },
+      {
+        "word_en": "Desk",
+        "word_ru": "Парта",
+        "sound": "desk.mp3"
+      },
+      {
+        "word_en": "Chair",
+        "word_ru": "Стул",
+        "sound": "chair.mp3"
+      },
+      {
+        "word_en": "Pen",
+        "word_ru": "Ручка",
+        "sound": "pen.mp3"
+      },
+      {
+        "word_en": "Big",
+        "word_ru": "Большой",
+        "sound": "big.mp3"
+      },
+      {
+        "word_en": "Small",
+        "word_ru": "Маленький",
+        "sound": "small.mp3"
+      },
+      {
+        "word_en": "Ten",
+        "word_ru": "Десять",
+        "sound": "ten.mp3"
+      },
+      {
+        "word_en": "Hen",
+        "word_ru": "Курица",
+        "sound": "hen.mp3"
+      },
+      {
+        "word_en": "Red",
+        "word_ru": "Красный",
+        "sound": "red.mp3"
+      },
+      {
+        "word_en": "Bed",
+        "word_ru": "Кровать",
+        "sound": "bed.mp3"
+      },
+      {
+        "word_en": "Very",
+        "word_ru": "Очень",
+        "sound": "very.mp3"
+      }
+    ]
+  },
+  {
+    "theme": "Lesson 1",
+    "is_active": true,
+    "words": [
+      {
+        "word_en": "Plane",
+        "word_ru": "Самолет",
+        "sound": "plane.mp3"
+      },
+      {
+        "word_en": "Bout",
+        "word_ru": "Лодка",
+        "sound": "bout.mp3"
+      },
+      {
+        "word_en": "Car",
+        "word_ru": "Машина",
+        "sound": "car.mp3"
+      },
+      {
+        "word_en": "Doll",
+        "word_ru": "Кукла",
+        "sound": "doll.mp3"
+      },
+      {
+        "word_en": "Cat",
+        "word_ru": "Кошка",
+        "sound": "cat.mp3"
+      },
+      {
+        "word_en": "Teddy",
+        "word_ru": "Мишка",
+        "sound": "teddy.mp3"
+      },
+      {
+        "word_en": "Computer",
+        "word_ru": "Компьютер",
+        "sound": "computer.mp3"
+      },
+      {
+        "word_en": "Game",
+        "word_ru": "Игра",
+        "sound": "game.mp3"
+      },
+      {
+        "word_en": "Ball",
+        "word_ru": "Мяч",
+        "sound": "ball.mp3"
+      },
+      {
+        "word_en": "Train",
+        "word_ru": "Поезд",
+        "sound": "train.mp3"
+      },
+      {
+        "word_en": "Man",
+        "word_ru": "Мужчина",
+        "sound": "man.mp3"
+      },
+      {
+        "word_en": "Van",
+        "word_ru": "Фургон",
+        "sound": "van.mp3"
+      },
+      {
+        "word_en": "Hat",
+        "word_ru": "Шляпа",
+        "sound": "hat.mp3"
+      },
+      {
+        "word_en": "Mat",
+        "word_ru": "Коврик",
+        "sound": "mat.mp3"
+      },
+      {
+        "word_en": "Fan",
+        "word_ru": "Вентилятор",
+        "sound": "fan.mp3"
+      },
+      {
+        "word_en": "Boy",
+        "word_ru": "Мальчик",
+        "sound": "boy.mp3"
+      },
+      {
+        "word_en": "Girl",
+        "word_ru": "Девочка",
+        "sound": "girl.mp3"
+      },
+      {
+        "word_en": "To go around",
+        "word_ru": "Хоровод",
+        "sound": "to_go_around.mp3"
+      },
+      {
+        "word_en": "To go",
+        "word_ru": "Идти",
+        "sound": "to_go.mp3"
+      },
+      {
+        "word_en": "Hello",
+        "word_ru": "Здравствуйте",
+        "sound": "hello.mp3"
+      },
+      {
+        "word_en": "Hi",
+        "word_ru": "Привет",
+        "sound": "hi.mp3"
+      },
+      {
+        "word_en": "Look",
+        "word_ru": "Смотри",
+        "sound": "look.mp3"
+      },
+      {
+        "word_en": "What is your name?",
+        "word_ru": "Как твое имя?",
+        "sound": "what_is_your_name.mp3"
+      },
+      {
+        "word_en": "My name is",
+        "word_ru": "Мое имя",
+        "sound": "my_name_is.mp3"
+      }
+    ]
+  },
+  {
+    "theme": "Lesson 4",
+    "is_active": false,
+    "words": [
+      {
+        "word_en": "Princess",
+        "word_ru": "Принцесса",
+        "sound": "princess.mp3"
+      },
+      {
+        "word_en": "Clown",
+        "word_ru": "Клоун",
+        "sound": "clown.mp3"
+      },
+      {
+        "word_en": "Balloon",
+        "word_ru": "Шар",
+        "sound": "balloon.mp3"
+      },
+      {
+        "word_en": "Old",
+        "word_ru": "Старый",
+        "sound": "old.mp3"
+      },
+      {
+        "word_en": "Fast",
+        "word_ru": "Быстрый",
+        "sound": "fast.mp3"
+      },
+      {
+        "word_en": "Slow",
+        "word_ru": "Медленный",
+        "sound": "slow.mp3"
+      },
+      {
+        "word_en": "New",
+        "word_ru": "Новый",
+        "sound": "new.mp3"
+      },
+      {
+        "word_en": "Tall",
+        "word_ru": "Высокий",
+        "sound": "tall.mp3"
+      },
+      {
+        "word_en": "Happy",
+        "word_ru": "Счастливый",
+        "sound": "happy.mp3"
+      },
+      {
+        "word_en": "Sad",
+        "word_ru": "Печальный",
+        "sound": "sad.mp3"
+      },
+      {
+        "word_en": "Fat",
+        "word_ru": "Толстый",
+        "sound": "fat.mp3"
+      },
+      {
+        "word_en": "Thin",
+        "word_ru": "Худой",
+        "sound": "thin.mp3"
+      },
+      {
+        "word_en": "Wig",
+        "word_ru": "Парик",
+        "sound": "wig.mp3"
+      },
+      {
+        "word_en": "Snake",
+        "word_ru": "Змея",
+        "sound": "snake.mp3"
+      },
+      {
+        "word_en": "Log",
+        "word_ru": "Бревно",
+        "sound": "log.mp3"
+      },
+      {
+        "word_en": "Fog",
+        "word_ru": "Туман",
+        "sound": "fog.mp3"
+      },
+      {
+        "word_en": "Dog",
+        "word_ru": "Собака",
+        "sound": "dog.mp3"
+      },
+      {
+        "word_en": "Box",
+        "word_ru": "Коробка",
+        "sound": "box.mp3"
+      },
+      {
+        "word_en": "Fox",
+        "word_ru": "Лиса",
+        "sound": "fox.mp3"
       }
     ]
   }

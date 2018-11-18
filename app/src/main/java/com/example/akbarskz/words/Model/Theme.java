@@ -9,6 +9,9 @@ public class Theme {
     @SerializedName("theme")
     @Expose
     private String theme;
+    @SerializedName("is_active")
+    @Expose
+    private Boolean isActive;
     @SerializedName("words")
     @Expose
     private List<Word> words = null;
@@ -29,4 +32,7 @@ public class Theme {
         this.words = words;
     }
 
+    public Boolean getIsActive() { return isActive; }
+
+    public void setIsActive(Boolean isActive) { this.isActive = isActive; }
 }
