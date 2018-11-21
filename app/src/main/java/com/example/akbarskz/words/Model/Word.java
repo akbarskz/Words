@@ -3,8 +3,13 @@ package com.example.akbarskz.words.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Word {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.TreeMap;
 
+public class Word {
     @SerializedName("word_en")
     @Expose
     private String wordEn;
@@ -19,9 +24,7 @@ public class Word {
         return wordEn;
     }
 
-    public void setWordEn(String wordEn) {
-        this.wordEn = wordEn;
-    }
+    public void setWordEn(String wordEn) { this.wordEn = wordEn; }
 
     public String getWordRu() {
         return wordRu;

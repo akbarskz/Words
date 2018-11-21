@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.akbarskz.words.Model.Game;
 import com.example.akbarskz.words.Model.Theme;
 import com.example.akbarskz.words.Model.Word;
 import com.google.gson.Gson;
@@ -41,20 +42,17 @@ public class MainActivity extends AppCompatActivity {
     public final int DRAG_OVER_SIZE_CHANGE = 4;
     private final String CHARACTER_PLACEHOLDER = "  ";
 
-    private Theme[] themes;
 
     private LinearLayout targetLayout, sourceLayout;
-    private Button check;
-    private TextView tvTheme, tvTranslation;
-    private ImageView play;
+    private Button checkButton;
+    private TextView themeText, translationText;
+    private ImageView playImage;
 
     private MediaPlayer mPlayer;
 
-    private Map<Integer, TextView> targets;
+    private Map<Integer, TextView> targetChars;
 
-    private Map<Character, ArrayList<Integer>> mCharacters;
-
-    private Word currentWord;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +60,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        targetLayout = (LinearLayout) findViewById(R.id.target);
-        sourceLayout = (LinearLayout) findViewById(R.id.source);
-        check = (Button) findViewById(R.id.check);
-        play = (ImageView) findViewById(R.id.play);
-        tvTheme = (TextView) findViewById(R.id.theme);
-        tvTranslation = (TextView) findViewById(R.id.translation);
+        targetLayout = findViewById(R.id.target);
+        sourceLayout = findViewById(R.id.source);
+        checkButton = findViewById(R.id.check);
+        playImage = findViewById(R.id.play);
+        themeText = findViewById(R.id.theme);
+        translationText = findViewById(R.id.translation);
 
-        targets = new TreeMap<Integer, TextView>();
+        targetChars = new TreeMap<>();
 
         // Инициализируем обработчик клика по кнопке проверки
-        check.setOnClickListener(new View.OnClickListener() {
+        checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Выводим результат проверки
@@ -83,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            initRandomWord();
+                            nextWord();
                         }
                     }, 2000);
 
@@ -93,27 +91,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        play.setOnClickListener(new View.OnClickListener() {
+        playImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sayCurrentWord();
             }
         });
 
-        mCharacters = new TreeMap<Character, ArrayList<Integer>>();
-
         String jsonString = getWordsJsonFromResources();
+        game = new Game(loadThemes(jsonString));
 
+        nextWord();
+    }
+
+    /**
+     * Загрузка тем из json
+     *
+     * @param jsonString
+     * @return
+     */
+    private Theme[] loadThemes(String jsonString) {
         Theme[] allThemes = new Gson().fromJson(jsonString, Theme[].class);
-        List<Theme> activeThemes = new ArrayList<Theme>();
+        List<Theme> activeThemes = new ArrayList<>();
         for (Theme theme : allThemes) {
             if (theme.getIsActive()) {
                 activeThemes.add(theme);
             }
         }
-        themes = activeThemes.toArray(new Theme[0]);
-
-        initRandomWord();
+        return activeThemes.toArray(new Theme[0]);
     }
 
     /**
@@ -147,45 +152,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Инициализация случайного слова
-     */
-    private void initRandomWord() {
-        Random rnd = new Random();
-        Theme theme = themes[rnd.nextInt(themes.length)];
-        Word word = theme.getWords().get(rnd.nextInt(theme.getWords().size()));
-        initWord(theme, word);
-    }
-
-    /**
-     * Инициализация слова
+     * Инициализация следующего слова
      *
-     * @param word Слово
      */
-    private void initWord(Theme theme, Word word) {
+    private void nextWord() {
+        Pair<Theme, Word> nextWord = game.nextWord();
 
-        tvTheme.setText(theme.getTheme());
-        tvTranslation.setText(word.getWordRu());
+        Theme theme = nextWord.getFirst();
+        Word word = nextWord.getSecond();
 
-        mCharacters.clear();
-
-        // Разбиваем слово на символы и заполняем mCharacters
-        for (int i = 0; i < word.getWordEn().length(); i++) {
-            Character character = Character.toLowerCase(word.getWordEn().charAt(i));
-            if (!mCharacters.containsKey(character)) {
-                mCharacters.put(character, new ArrayList<Integer>());
-            }
-            mCharacters.get(character).add(i);
-        }
+        themeText.setText(theme.getTheme());
+        translationText.setText(word.getWordRu());
 
         // Загрузчик представления
         LayoutInflater mInflater = LayoutInflater.from(MainActivity.this);
 
         // Получаем список букв в произвольном порядке
-        ArrayList<Character> characters = getRandomCharacters();
+        ArrayList<Character> characters = game.getRandomCharacters();
 
         // Очищаем все имеющиеся элементы слова
         targetLayout.removeAllViews();
-        targets.clear();
+        targetChars.clear();
 
         // Добавляем места для букв слова
         for (int i = 0; i < characters.size(); i++) {
@@ -197,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             target.setOnLongClickListener(longClickListener);
             target.setOnClickListener(targetClickListener);
             targetLayout.addView(target);
-            targets.put(i, target);
+            targetChars.put(i, target);
         }
 
         // Очищаем все имеющиеся символы
@@ -219,36 +206,8 @@ public class MainActivity extends AppCompatActivity {
         // Обновяем видимость кнопки проверки слова
         updateCheckButtonVisibility();
 
-        currentWord = word;
-
         // Произносим слово
         sayCurrentWord();
-    }
-
-    /**
-     * Формирование списка букв слова располженных в проихвольном порядке
-     *
-     * @return Список букв
-     */
-    private ArrayList<Character> getRandomCharacters() {
-        ArrayList<Character> characters = new ArrayList<Character>();
-        for (Character character : mCharacters.keySet()) {
-            int characterCount = mCharacters.get(character).size();
-            for (int i = 0; i < characterCount; i++) {
-                characters.add(character);
-            }
-        }
-
-        Random rnd = new Random();
-        int characterCount = characters.size();
-        for (int i = 0; i < characterCount; i++) {
-            int newPosition = rnd.nextInt(characterCount);
-            char character = characters.get(i);
-            characters.set(i, characters.get(newPosition));
-            characters.set(newPosition, character);
-        }
-
-        return characters;
     }
 
     /**
@@ -278,9 +237,9 @@ public class MainActivity extends AppCompatActivity {
             TextView source = (TextView) v;
             if (!canDrag(source)) return;
 
-            int targetCount = targets.size();
+            int targetCount = targetChars.size();
             for (int i = 0; i < targetCount; i++) {
-                TextView target = targets.get(i);
+                TextView target = targetChars.get(i);
                 if (canDrop(source, target)) {
                     moveCharacter(source, target);
                     break;
@@ -457,8 +416,8 @@ public class MainActivity extends AppCompatActivity {
         else
             visibility = View.INVISIBLE;
 
-        if (check.getVisibility() != visibility) {
-            check.setVisibility(visibility);
+        if (checkButton.getVisibility() != visibility) {
+            checkButton.setVisibility(visibility);
         }
     }
 
@@ -493,10 +452,7 @@ public class MainActivity extends AppCompatActivity {
             TextView characterTextView = (TextView) targetLayout.getChildAt(i);
             int index = (Integer) characterTextView.getTag();
             Character character = characterTextView.getText().charAt(0);
-            if (!mCharacters.containsKey(character)) {
-                throw new RuntimeException("Character '" + character + "' not found");
-            }
-            if (!mCharacters.get(character).contains(index)) {
+            if (!game.checkCharacter(character, index)) {
                 success = false;
                 break;
             }
@@ -514,7 +470,7 @@ public class MainActivity extends AppCompatActivity {
             if (mPlayer == null){
                 mPlayer = new MediaPlayer();
                 Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName()
-                        + "/raw/" + removeExtension(currentWord.getSound()));
+                        + "/raw/" + removeExtension(game.getSound()));
                 mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mPlayer.setDataSource(getApplicationContext(), soundUri);
                 mPlayer.prepare();
