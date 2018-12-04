@@ -1,5 +1,6 @@
 package com.example.akbarskz.words.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -29,10 +30,24 @@ public class Theme {
     }
 
     public void setWords(List<Word> words) {
+
         this.words = words;
+
     }
 
     public Boolean getIsActive() { return isActive; }
 
     public void setIsActive(Boolean isActive) { this.isActive = isActive; }
+
+    public List<Word> getValidWords() {
+
+        List<Word> validWords = new ArrayList<Word>();
+        for (Word word: words) {
+            if (word.getWordEn().length() < 13) {
+                validWords.add(word);
+            }
+        }
+
+        return validWords;
+    }
 }

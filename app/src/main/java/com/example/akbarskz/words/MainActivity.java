@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.akbarskz.words.Model.Game;
 import com.example.akbarskz.words.Model.Theme;
 import com.example.akbarskz.words.Model.Word;
+import com.example.akbarskz.words.Utils.Pair;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -34,7 +35,6 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.TreeMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -167,40 +167,54 @@ public class MainActivity extends AppCompatActivity {
         // Загрузчик представления
         LayoutInflater mInflater = LayoutInflater.from(MainActivity.this);
 
-        // Получаем список букв в произвольном порядке
-        ArrayList<Character> characters = game.getRandomCharacters();
+        // Получаем маску слова
+        ArrayList<Character> wordMask = game.getWordMask();
 
         // Очищаем все имеющиеся элементы слова
         targetLayout.removeAllViews();
         targetChars.clear();
 
         // Добавляем места для букв слова
-        for (int i = 0; i < characters.size(); i++) {
-            TextView target = (TextView) mInflater
-                    .inflate(R.layout.item_character, targetLayout, false);
-            target.setText(CHARACTER_PLACEHOLDER);
+        for (int i = 0; i < wordMask.size(); i++) {
+            Character character = wordMask.get(i);
+
+            TextView target = (TextView) mInflater.inflate(
+                    character.charValue() == 'X'
+                            ? R.layout.item_character
+                            : R.layout.special_character,
+                    targetLayout, false);
             target.setTag(i);
-            target.setOnDragListener(dragListener);
-            target.setOnLongClickListener(longClickListener);
-            target.setOnClickListener(targetClickListener);
+
+            if (character.charValue() == 'X') {
+                target.setText(CHARACTER_PLACEHOLDER);
+                target.setOnDragListener(dragListener);
+                target.setOnLongClickListener(longClickListener);
+                target.setOnClickListener(targetClickListener);
+            } else {
+                target.setText(character + "");
+            }
+
             targetLayout.addView(target);
+
             targetChars.put(i, target);
         }
+
+
+        // Получаем список букв в произвольном порядке
+        ArrayList<Character> characters = game.getRandomCharacters();
 
         // Очищаем все имеющиеся символы
         sourceLayout.removeAllViews();
 
         // Добавляем места для символов
         for (Character character : characters) {
-            {
-                TextView source = (TextView) mInflater
-                        .inflate(R.layout.item_character, sourceLayout, false);
-                source.setText(character + "");
-                source.setOnDragListener(dragListener);
-                source.setOnLongClickListener(longClickListener);
-                source.setOnClickListener(sourceClickListener);
-                sourceLayout.addView(source);
-            }
+            TextView source = (TextView) mInflater
+                    .inflate(R.layout.item_character, sourceLayout, false);
+            source.setText(character + "");
+            source.setOnDragListener(dragListener);
+            source.setOnLongClickListener(longClickListener);
+            source.setOnClickListener(sourceClickListener);
+            sourceLayout.addView(source);
         }
 
         // Обновяем видимость кнопки проверки слова

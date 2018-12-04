@@ -1,4 +1,4 @@
-package com.example.akbarskz.words;
+package com.example.akbarskz.words.Utils;
 
 public class Pair<U, V> {
 

@@ -1,6 +1,6 @@
 package com.example.akbarskz.words.Model;
 
-import com.example.akbarskz.words.Pair;
+import com.example.akbarskz.words.Utils.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Game {
     public Pair<Theme, Word> nextWord() {
         Random rnd = new Random();
         Theme theme = themes[rnd.nextInt(themes.length)];
-        currentWord = theme.getWords().get(rnd.nextInt(theme.getWords().size()));
+        currentWord = theme.getValidWords().get(rnd.nextInt(theme.getValidWords().size()));
         fillCharPositions();
         return new Pair(theme, currentWord);
     }
@@ -38,6 +38,7 @@ public class Game {
         // Разбиваем слово на символы и заполняем charPositions
         for (int i = 0; i < currentWord.getWordEn().length(); i++) {
             Character character = Character.toLowerCase(currentWord.getWordEn().charAt(i));
+
             if (!charPositions.containsKey(character)) {
                 charPositions.put(character, new ArrayList<Integer>());
             }
@@ -46,16 +47,40 @@ public class Game {
     }
 
     /**
-     * Формирование списка букв слова располженных в произвольном порядке
+     * Формирование маски слова (буквы заменены на символ X, другие символы оставлены без изменения)
+     *
+     * @return Список букв
+     */
+    public ArrayList<Character> getWordMask() {
+
+        ArrayList<Character> characters = new ArrayList<>();
+        for (int i = 0; i < currentWord.getWordEn().length(); i++) {
+            Character character = Character.toLowerCase(currentWord.getWordEn().charAt(i));
+            char characterValue = character.charValue();
+            if (characterValue >= 'a' && characterValue <= 'z' ) {
+                characters.add(Character.valueOf('X'));
+            } else {
+                characters.add(character);
+            }
+        }
+
+        return characters;
+    }
+
+    /**
+     * Формирование списка букв слова расположенных в произвольном порядке
      *
      * @return Список букв
      */
     public ArrayList<Character> getRandomCharacters() {
         ArrayList<Character> characters = new ArrayList<>();
         for (Character character : charPositions.keySet()) {
-            int characterCount = charPositions.get(character).size();
-            for (int i = 0; i < characterCount; i++) {
-                characters.add(character);
+            char characterValue = character.charValue();
+            if (characterValue >= 'a' && characterValue <= 'z' ) {
+                int characterCount = charPositions.get(character).size();
+                for (int i = 0; i < characterCount; i++) {
+                    characters.add(character);
+                }
             }
         }
 
